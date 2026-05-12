@@ -39,7 +39,7 @@ public class SendingMessages {
             System.out.println("Enter your password:");
             String password = input.nextLine();
             
-            //Registered details
+            // Registered details
             String correctUsername = "De_e";
             String correctPassword = "Pass123!";
             
