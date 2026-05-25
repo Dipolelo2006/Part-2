@@ -7,7 +7,7 @@ package com.mycompany.sendingmessages;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import com.mycompany.registration_and_login.Registration_And_Login;
+import java.io.IOException;
 
 /**
  * Part 2- Sending Messages
@@ -54,7 +54,7 @@ public class SendingMessages {
            return false;
        }
     }
-    public static void sendMessage(Scanner input){
+    public static void sendMessage(Scanner input) throws IOException{
         // Step 5
         System.out.println("How many messages would you like to send?");
         int numMessages = input.nextInt();
@@ -111,6 +111,10 @@ public class SendingMessages {
         // Step 6 continued
         System.out.println("\nTotal Messages sent:" + Message.returnTotalMessagesSent());
         System.out.println("Thank you for using QuickChat. Goodbye!");
+    }
+
+    private static void sendMessages(Scanner input) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
         
 }

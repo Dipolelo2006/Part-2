@@ -12,7 +12,7 @@ import java.io.IOException;
  */
 public class Message {
     private String recipient;
-    private String messageID;
+    private final String messageID;
     private String messageHash;
     private String messageText;
     private static int numMessagesSent = 0;
@@ -63,10 +63,13 @@ public class Message {
        return "Message successfully stored.";
     }
     private void saveToJson() throws IOException{
+            JSONObject json = new JSONObject();
+            json.put("id", messageID);
+            json.put("hash",messageHash);
+            json.put("recipient", recipient);
+            json.put("message", messageText);
         try(FileWriter writer = new FileWriter("message.json", true)){
-            String json = "{\id\":\"" + messageID + "\",\"hash\":\"" + messageHash +
-                    " \",\"recipient\":\"" + recipient + "\",\"message\":\"" + messageText + "\",\n" + "\"}\n";
-            writer.write(json);
+            writer.write(json.toString() + "\n");
             System.out.println("Message saved to message.json");               
     }   catch (IOException e) {        
         }
@@ -79,5 +82,21 @@ public class Message {
     }
     public static int returnTotalMessagesSent(){
         return numMessagesSent;
+    }
+
+    boolean storeMessage() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+
+    private static class JSONObject {
+
+        public JSONObject() {
+        }
+
+        private void put(String id, String messageID) {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
     }
 }

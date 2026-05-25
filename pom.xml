@@ -7,12 +7,11 @@
     <packaging>jar</packaging>
     <dependencies>
         <dependency>
-            <groupId>co.cask.wrangler</groupId>
-            <artifactId>wrangler-core</artifactId>
-            <version>3.2.2</version>
-            <type>jar</type>
+    <groupId>org.json</groupId>
+    <artifactId>json</artifactId>
+    <version>20260522</version>
         </dependency>
-    </dependencies>
+  </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>25</maven.compiler.release>
