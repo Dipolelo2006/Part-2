@@ -29,56 +29,73 @@ public class SendingMessages {
                 input.close();
                 return;
             }
-            System.out.println("Login successful! You can now send messages.");
-            
-            //==================MAIN MENU====================
-            while (true){
-                displayMenu();
-                int choice = getValidInt(input);
-                
-               if (choice ==1){
-                    System.out.println("\n[Send Messages feature will be implemented next]");
-               }
-               else if(choice ==2){
-                   System.out.println("\nComing soon.");
-               }
-               else if(choice ==3){
-                   System.out.println("\nThank you for using QuickChat. Goodbye!");
-                   break;
-               }else{
-                   System.out.println("Invalid option. Please try again.");
-               }
-            }
-            input.close();
+            sendMessages(input);
+        }catch (Exception e){
+            System.out.println("An error has occured:" + e.getMessage());   
         }
+    }
+    public static void sendMessage(Scanner input){
+        // Step 5
+        System.out.println("How many messages would you like to send?");
+        int numMessages = input.nextInt();
+        input.nextLine(); // Consume NewLine
+        
+        for (int i= 1; i <= numMessages; i++){
+            System.out.println("\n===Processing Message" + i + "===");
+            
+            Message msg= new Message();
+            
+            // Step 6
+            System.out.println("Enter recipient cell number:");
+            String recipient = input.nextLine();
+            msg.setRecipient(recipient);
+            
+            System.out.println("Enter your message (Max 250 characters):");
+            String text = input.nextLine();
+            msg.setMessage(text);
+            
+            System.out.println("\n====QuickChat Main Menu====");
+            System.out.println("Option 1). Send Messages"); //3a
+            System.out.println("Option 2). Show recently sent messages");//3b
+            System.out.println("Option 3) Quit");
+            System.out.println("Enter your choice:");
+            
+            int action = input.nextInt();
+            input.nextLine(); // Consume NextLine
+            
+            switch (action){
+                case 1:
+                    String result = msg.sendMessage();
+                    System.out.println(result);
+                    if(result.equals("Message successfully sent.")){
+                        msg.printMessageDetails();
+                        sentMessages.add(msg);
+                    }
+                    break;
+                    
+                case 2:
+                    System.out.println("Press 0 to delete the message.");
+                    System.out.println("Message disregarded.");
+                    break;
+                    
+                case 3:
+                    System.out.println(msg.storeMessage());
+                    msg.printMessageDetails();
+                    sentMessages.add(msg);
+                    break;
+                    
+                default:
+                    System.out.println("Invalid option. Please try again.");
+            }
+        }
+        // Step 6 continued
+        System.out.println("\nTotal Messages sent:" + Message.returnTotalMessagesSent());
+        System.out.println("Thank you for using QuickChat. Goodbye!");
     }
         // LOGIN METHOD
         private static boolean login (Scanner input){
-            System.out.println("Enter your username:");
-            String username = input.nextLine();
-            
-            System.out.println("Enter your password:");
-            String password = input.nextLine();
-            
-            return !username.trim().isEmpty() && !password.trim().isEmpty();
+            System.out.println("Login successful.");
+        return true;
             }
-        // Display numeric menu
-        private static void displayMenu(){
-                System.out.println("\n====QuickChat Main Menu====");
-                System.out.println("Option 1). Send Messages"); //3a
-                System.out.println("Option 2). Show recently sent messages");//3b
-                System.out.println("Option 3) Quit");
-                System.out.println("Enter your choice:");
-        }
-        
-        private static int getValidInt(Scanner input){
-            while(!input.hasNextInt()){
-                System.out.println("Invalid input. Enter a number:");
-                input.next();
-            }
-            int num = input.nextInt();
-            input.nextLine(); // Consume newLine
-            return num;
-        }
             
 }
