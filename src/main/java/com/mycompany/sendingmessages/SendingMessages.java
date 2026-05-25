@@ -7,6 +7,7 @@ package com.mycompany.sendingmessages;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import com.mycompany.registration_and_login.Registration_And_Login;
 
 /**
  * Part 2- Sending Messages
@@ -33,6 +34,25 @@ public class SendingMessages {
         }catch (Exception e){
             System.out.println("An error has occured:" + e.getMessage());   
         }
+    }
+    
+    //=================Part 1===============================
+    private static boolean login (Scanner input){
+        System.out.println("\n===Login to QuickChat===");
+        
+        System.out.println("Enter your username:");
+        String username = input.nextLine();
+        
+        System.out.println("Enter your password:");
+        String password = input.nextLine();
+        
+       if(username != null && !username.trim().isEmpty() && password != null && !password.trim().isEmpty()){
+           System.out.println("Login successful.");
+           return true;  
+       }else{
+           System.out.println("Login failed. Incorrect password or username.");
+           return false;
+       }
     }
     public static void sendMessage(Scanner input){
         // Step 5
@@ -92,10 +112,5 @@ public class SendingMessages {
         System.out.println("\nTotal Messages sent:" + Message.returnTotalMessagesSent());
         System.out.println("Thank you for using QuickChat. Goodbye!");
     }
-        // LOGIN METHOD
-        private static boolean login (Scanner input){
-            System.out.println("Login successful.");
-        return true;
-            }
-            
+        
 }
