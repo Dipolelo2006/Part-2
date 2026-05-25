@@ -118,3 +118,10 @@ public class SendingMessages {
     }
         
 }
+
+//=======REFERENCING LIST:==============
+//OpenAI, 2026. ChatGPT AI language model. Available at: https://openai.com/chatgpt [Accessed 25 May 2026].
+//Mozilla, 2026. MDN Web Docs. Available at: https://developer.mozilla.org [Accessed 25 May 2026].
+//Stack Overflow, 2026. Programming discussions and solutions. Available at: https://stackoverflow.com [Accessed 25 May 2026].
+//W3Schools, 2026. Online web development tutorials. Available at: https://www.w3schools.com [Accessed 25 May 2026].
+//GitHub, 2026. Software development platform and code repository. Available at: https://github.com [Accessed 25 May 2026].
